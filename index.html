@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para o Anne 💞</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      height: 80vh;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 100%;
+      opacity: 0;
+      transition: all 0.8s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .page.active {
+      left: 0;
+      opacity: 1;
+    }
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 1.8em;
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1em;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+    button {
+      background: #ff758c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #ff527b;
+    }
+
+    /* Estilo para o vídeo de fundo */
+    #video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* para que cliques passem por cima */
+      z-index: -1;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- páginas como antes -->
+    <div class="page active">
+      <img src="anne4.jpg.jpeg" alt="Nós dois" />
+      <h1>Minha Gatinha 💖</h1>
+      <p>
+        Desde o momento em que te conheci, percebi que a vida pode sim ter algum sentido.<br />
+        Quando tenho a oportunidade de te ver sorrir, ali posso dizer que sou felz duas vezes mais<br />
+      </p>
+    </div>
+
+    <div class="page">
+      <img src="anne2.jpg.jpeg" alt="Momentos juntos" />
+      <h1>Teu Jeito Único ✨</h1>
+      <p>
+        Gosto muito do teu olhar, o teu abraço, e o jeito como o tempo para quando estou com você.<br />
+        Cada detalhe teu é poesia.<br />
+        E eu poderia passar a vida inteira lendo essa poesia.
+      </p>
+    </div>
+
+    <div class="page">
+      <img src="anne3.jpg.jpeg" width="300" height="300" alt="Sorrisos" />
+      <h1>Essa é mais uma maneira de te mostrar que eu te gosto 💫</h1>
+      <p>
+        A nossa história é até algo engraçado, a gente realmente arriscou nossas vidas tentando conhecer um ao outro kkkk.<br />
+        E poderia passar dias e dias escrevendo algo sobre isso, mas preferi fazer um mini site e dar uma resumida nisso tudo.<br />
+      </p>
+    </div>
+
+    <div class="page">
+      <img src="anne1.jpg.jpeg" alt="Nosso futuro" />
+      <h1>Amo essa nossa foto aqui</h1>
+      <p>
+        Independente de qualquer coisa, estarei semprepara cuidar de você, te ouvir e te apoiar nos dias bons e nos ruins.<br />
+        <br />
+        Com amor, MH. 💞
+      </p>
+    </div>
+
+    <div class="buttons">
+      <button id="prev">⬅️ Voltar</button>
+      <button id="next">Próximo ➡️</button>
+    </div>
+  </div>
+
+  <!-- Vídeo de fundo (YouTube embed) -->
+  <iframe
+    id="video-bg"
+    src="https://www.youtube.com/embed/3mHQ7a_fOy8?autoplay=1&mute=1&loop=1&playlist=3mHQ7a_fOy8"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+  ></iframe>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const nextBtn = document.getElementById('next');
+    const prevBtn = document.getElementById('prev');
+    let current = 0;
+
+    function showPage(index) {
+      pages.forEach((page, i) => {
+        page.classList.remove('active');
+        if (i === index) {
+          page.classList.add('active');
+        }
+      });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % pages.length;
+      showPage(current);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + pages.length) % pages.length;
+      showPage(current);
+    });
+  </script>
+</body>
+</html>
